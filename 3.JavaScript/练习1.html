@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>练习1</title>
+
+    <script>
+
+         /* 小九九 */
+         for(var i=1;i<=9;i++){  //i 行
+             for(var j=1;j<=i;j++){  //j 列
+                 document.write(i+"*"+j+"="+(i*j)+"&nbsp;&nbsp;&nbsp;&nbsp;");
+             }
+             document.write("<br>");
+         }
+
+        /* 金字塔 */
+        for(var i=1;i<=5;i++){  //i是当前行
+            //空格
+            for(var p=1;p<=5-i;p++){
+                document.write("&nbsp;&nbsp;");
+            }
+
+            //*
+            for(var s=1;s<=2*i-1;s++){
+                document.write("<span style='color:red;font-size: 30px'>*</span>");
+            }
+
+            //换行
+            document.write("<br>");
+        }
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>
