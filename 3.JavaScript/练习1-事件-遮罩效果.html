@@ -1,18 +1,21 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>练习2--遮罩效果</title>
+    <title>事件-遮罩效果</title>
 
     <style>
+
         *{
             margin: 0;
             padding: 0;
         }
+
         body{
             background-image: url("img/paris.jpg");
         }
 
+        /* 遮罩 */
         .mask{
             width: 100%;
             height: 100%;
@@ -22,46 +25,51 @@
             top: 0;
         }
 
-        .d{
-            width: 200px;
+        /* 广告 */
+        .ad{
+            width: 300px;
             height: 200px;
-            background-color: palevioletred;
+            background-color: lightcoral;
             position: absolute;
             left: 600px;
-            top: 280px;
+            top:280px;
         }
+
+        /* 关闭符号x */
         .x{
             width: 20px;
             height: 20px;
             border-radius: 50%;
-            background-color: darkgrey;
+            background-color: darkgray;
             text-align: center;
             position: absolute;
-            left: 190px;
+            left: 290px;
             top: -10px;
         }
 
     </style>
 
+
     <script>
 
+        //点击关闭按钮，关闭广告弹窗
         window.onload=function(){
             var mask = document.getElementsByClassName("mask")[0];
-            var d = document.getElementsByClassName("d")[0];
+            var ad = document.getElementsByClassName("ad")[0];
             var x = document.getElementsByClassName("x")[0];
 
-            x.onclick = function(){
+            x.onclick=function () {
                 mask.style.display="none";
-                d.style.display="none";
-            };
-        };
+                ad.style.display="none";
+            }
+        }
 
     </script>
 
 </head>
 <body>
     <div class="mask"></div>
-    <div class="d">
+    <div class="ad">
         <div class="x">X</div>
     </div>
 </body>

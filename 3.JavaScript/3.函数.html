@@ -55,20 +55,32 @@
             1).通常构造函数的首字母是大写的（让识别构造函数变得更容易）。
             2).构造函数通常要和 new 操作符结合，用来构造新对象。
          */
-        function Fun() {
-            //var  声明局部变量
-            var username = "zhangsan";
-            var password = "123";
+        // function Fun() {
+        //     //var  声明局部变量
+        //     var username = "zhangsan";
+        //     var password = "123";
+        //
+        //     //this 声明属性
+        //     this.username = "lisi";
+        //     this.password = "111";
+        // }
+        // //创建对象  new 构造函数();
+        // var f = new Fun();
+        // //使用属性
+        // alert(f.username);   //lisi
+        // alert(f.password);   //111
 
-            //this 声明属性
-            this.username = "lisi";
-            this.password = "111";
+        function Person(name){
+            //属性
+            this.name = name;
+            //方法
+            this.hello = function(){
+                alert("hello "+this.name);
+            }
         }
-        //创建对象  new 构造函数();
-        var f = new Fun();
-        //使用属性
-        alert(f.username);   //lisi
-        alert(f.password);   //111
+        var p = new Person("战三");
+        p.hello();
+
 
         //全局变量
         // var a = 20;
