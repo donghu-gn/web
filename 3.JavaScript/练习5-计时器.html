@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计时器</title>
+
+    <script>
+
+        window.onload=function () {
+            var start = document.getElementById("start");
+            var count = document.getElementById("count");
+            var stop = document.getElementById("stop");
+
+
+            //计数
+            var i = 1;
+            function fun(){
+                count.value = i;
+                i++;
+            }
+
+            var a;
+            start.onclick = function () {
+                //开启定时器
+                a = window.setInterval(fun,1000);
+            }
+
+            stop.onclick = function () {
+                //暂停定时器
+                window.clearInterval(a);
+            }
+        }
+
+    </script>
+
+
+</head>
+<body>
+    <input type="button" value="启动" id="start"/>
+    <input type="text" id="count" value="0"/>
+    <input type="button" value="暂停" id="stop"/>
+</body>
+</html>

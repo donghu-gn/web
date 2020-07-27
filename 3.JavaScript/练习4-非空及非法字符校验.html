@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>非空及非法字符校验</title>
+
+    <script>
+
+        //校验名称是否为空，是否存在非法字符
+        function validateName(){
+            //获得username的输入框中的值
+            var username = document.getElementById("username").value;
+            //获得姓名错误信息标签对象
+            var usernameMsg = document.getElementById("usernameMsg");
+
+            if(username==""){
+                usernameMsg.innerHTML = "<font color='red'>姓名不能为空</font>";
+                return false;
+            }else{
+                //校验是否存在非法字符
+                var reg = new RegExp("^[A-Za-z0-9]+$");
+                if(reg.test(username)){
+                    usernameMsg.innerHTML = "<font color='green'>姓名合法通过</font>";
+                    return true;
+                }else{
+                    usernameMsg.innerHTML = "<font color='red'>姓名不合法未通过</font>";
+                    return false;
+                }
+            }
+        }
+
+        //校验密码是否为空，校验密码强度
+        function validatePwd(){
+            //获得password的输入框中的值
+            var password = document.getElementById("password").value;
+            //获得密码错误信息标签对象
+            var passwordMsg = document.getElementById("passwordMsg");
+            //获得密码强度提示的标签对象
+            var low = document.getElementById("low");
+            var middle = document.getElementById("middle");
+            var high = document.getElementById("high");
+
+            if(password==""){
+                passwordMsg.innerHTML = "<font color='red'>密码不能为空</font>";
+                return false;
+            }else{
+                //校验密码强度
+                var lowReg = new RegExp("^[0-9]*$");
+                var middleReg = new RegExp("^[A-Za-z]+$");
+                var highReg = new RegExp("^[A-Za-z0-9]+$");
+
+                if(lowReg.test(password) || middleReg.test(password)){
+                    //密码强度较弱
+                    low.innerHTML = "<font color='red'>弱</font>";
+                    return false;
+                }else if(highReg.test(password)){
+                    //密码强度中等
+                    passwordMsg.innerHTML = "<font color='green'>密码通过</font>";
+                    middle.innerHTML = "<font color='orange'>中</font>";
+                    return  true;
+                }else{
+                    //密码强度强
+                    passwordMsg.innerHTML = "<font color='green'>密码通过</font>";
+                    high.innerHTML = "<font color='green'>强</font>";
+                    return  true;
+                }
+            }
+        }
+
+
+        function validate(){
+            if(validateName() & validatePwd()){
+                return true; //提交表单
+            }
+            return false; //不提交表单
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <form action="#" id="f" onsubmit="return validate();">
+        username:<input type="text" name="username" id="username">
+        <span id="usernameMsg"></span><br>
+        password:<input type="password" name="password" id="password">
+        <span id="passwordMsg"></span><span id="low"></span><span id="middle"></span><span id="high"></span><br>
+        <input type="submit" value="登录"/><br/>
+        <input type="reset" value="重置"/><br/>
+    </form>
+</body>
+</html>

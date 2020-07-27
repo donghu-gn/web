@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>模拟placeholder效果</title>
+
+    <style>
+
+        *{
+            margin: 0;
+            padding: 0;
+        }
+
+        input{
+            /* 绝对定位，脱离文档流 */
+            position: absolute;
+            left: 0;
+            top: 0;
+            /* 与父级元素背景色相同 */
+            background: transparent;
+        }
+
+        #sp1{
+            color:#999999;
+        }
+
+    </style>
+
+</head>
+<body>
+    <form>
+        <input type="text" name="name" maxlength="15" id="name" onkeydown="down()" onkeyup = "up()" />
+        <span id="sp1">请输入用户名</span><br/>
+        <span id="sp2">15</span>
+    </form>
+</body>
+
+<script>
+
+    var input = document.getElementById("name");
+    var sp1 = document.getElementById("sp1");
+    var sp2 = document.getElementById("sp2");
+
+    //键盘按键按下
+    function down(){
+        var username = input.value.trim();
+        //当前姓名的输入框中有值
+        if(username.length>0){
+            //将提示隐藏
+            sp1.style.display  = "none";
+        }else{
+            //否则将提示显示出来
+            sp1.style.display  = "inline-block";
+        }
+        //统计当前输入框中的剩余可写字符数
+        sp2.innerText = 15-username.length;
+    }
+
+
+    //键盘按键抬起来
+    function up() {
+        var username = input.value.trim();
+        //当前姓名的输入框中有值
+        if(username.length>0){
+            //将提示隐藏
+            sp1.style.display  = "none";
+        }else{
+            //否则将提示显示出来
+            sp1.style.display  = "inline-block";
+        }
+        //统计当前输入框中的剩余可写字符数
+        sp2.innerText = 15-username.length;
+    }
+
+
+</script>
+
+</html>
