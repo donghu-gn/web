@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作-定时器</title>
+</head>
+<body>
+    <div></div>
+</body>
+
+<script>
+
+    //通过标签名称获取div标签对象
+    var div = document.getElementsByTagName("div")[0];
+
+    //显示当前时间
+    function getTime(){
+        var today = new Date();
+        div.innerHTML = "<h1 style='color: brown'>"+today.toLocaleString()+"</h1>";
+    }
+
+    //定时刷新时间的效果（定时器）
+    window.setInterval(getTime,1000);
+
+    //设置延迟加载时间（延时器）
+    window.setTimeout(getTime,0)
+
+</script>
+
+</html>

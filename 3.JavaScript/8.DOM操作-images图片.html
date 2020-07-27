@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM操作-images图片</title>
+
+    <script>
+
+        window.onload = function(){
+            var btn = document.getElementById("btn");
+            btn.onclick = function(){
+                document.images[0].src = "img/border.png";
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <img src="img/paris.jpg"/>
+    <input type="button" value="切换" id="btn" >
+</body>
+</html>

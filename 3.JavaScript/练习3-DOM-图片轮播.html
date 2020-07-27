@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DOM-图片轮播</title>
+
+    <script>
+
+        window.onload = function(){
+            //获得img标签
+            var img = document.images[0];
+            var i = 2;
+
+            //此函数控制图片的轮播
+            function change(){
+                if(i>5){
+                    i = 1;
+                }
+                img.src = "img/"+i+".jpg";
+                i++;
+            }
+
+            //通过定时器实现图片轮播
+            var a;
+            function play() {
+                a = window.setInterval(change,1000);
+            }
+            //设置延时器
+            window.setTimeout(play,0);
+
+            //鼠标悬停在图片上时，暂停切换图片
+            img.onmouseover = function(){
+                //清除定时器
+                window.clearInterval(a);
+            }
+
+            //鼠标离开图片上时，继续播放图图片
+            img.onmouseout = function(){
+                a = window.setInterval(change,1000);
+            }
+        }
+
+
+    </script>
+
+</head>
+<body>
+    <img src="img/1.jpg">
+</body>
+</html>

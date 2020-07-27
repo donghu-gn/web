@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>select节点操作</title>
+</head>
+<body>
+    <select id="s">
+        <option value="上海">上海</option>
+        <option value="北京">北京</option>
+        <option value="深圳">深圳</option>
+    </select>
+
+    <input type="button" value="增加节点" onclick="addOption()">
+    <input type="button" value="删除节点" onclick="delOption()">
+</body>
+
+<script>
+
+    //添加select下的option
+    function addOption(){
+        //获得下拉菜单标签对象
+        var s = document.getElementById("s");
+        //创建option的节点
+        var o = document.createElement("option");
+        //给option添加文本
+        o.text = "无锡";
+        //将option添加至select上，默认添加在末尾
+        //s.add(o);
+        //添加至指定的位置上
+        s.add(o,0);
+    }
+
+    //删除select下的option
+    function delOption(){
+        //获得下拉菜单标签对象
+        var s = document.getElementById("s");
+        //移除最后一个option
+        // if(s.length>0){
+        //     s.remove(s.length-1);
+        // }
+        //移除选中位置的option   selectedIndex选中的节点下标
+        s.remove(s.selectedIndex);
+    }
+
+</script>
+
+</html>

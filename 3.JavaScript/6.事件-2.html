@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+</head>
+<body>
+    <form action="#" id="f" onsubmit="return login();">
+        username:<input type="text" name="username" id="username">
+        <div id="usernameMsg"></div>
+        password:<input type="password" name="password" id="password">
+        <div id="passwordMsg"></div>
+        <input type="button" value="登录button" onclick="loginBtn()"/><br/>
+        <input type="submit" value="提交submit"/><br/>
+        <input type="button" value="返回" onclick="window.history.back();"/><br/>
+    </form>
+</body>
+
+<script>
+
+    //方式一：点击submit按钮，触发onsubmit()事件  非空校验，返回true则提交表单；返回false则不提交表单显示错误信息
+    function login(){
+        if(validateUsername() & validatePassword()){
+            //提交表单
+            return true;
+        }
+        //不提交表单
+        return false;
+    }
+
+    //校验用户名是否为空  true不为空，可以通过校验  false为空，不可以通过校验
+    function validateUsername(){
+        //获得当前用户名输入框的值
+        var username = document.getElementById("username").value;
+        //提示信息
+        var usernameMsg = document.getElementById("usernameMsg");
+        if(username==""){
+            usernameMsg.innerHTML = "<font style='color: red'>姓名不能为空</font>";
+            return false;
+        }
+        return true;
+    }
+
+    //校验密码是否为空
+    function validatePassword(){
+        //获得当前密码输入框的值
+        var password = document.getElementById("password").value;
+        //密码提示信息
+        var passwordMsg = document.getElementById("passwordMsg");
+        if(password==""){
+            passwordMsg.innerHTML = "<font style='color: red'>密码不能为空</font>";
+            return false;
+        }
+        return true;
+    }
+    
+    
+    //方式二：用button按钮提交表单
+    function loginBtn() {
+        alert("loginBtn");
+
+        if(validateUsername() & validatePassword()){
+            //提交表单
+            //document.getElementById("f").submit();
+            document.forms[0].submit();
+        }
+    }
+
+</script>
+
+</html>
