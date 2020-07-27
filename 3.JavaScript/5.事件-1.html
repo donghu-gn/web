@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>事件</title>
+
+    <style>
+
+        .d{
+            width: 200px;
+            height: 200px;
+        }
+
+        .d1{
+            background-color: cadetblue;
+        }
+
+        .d2{
+            background-color: lightcoral;
+        }
+
+    </style>
+
+
+    <script>
+
+        //第一种方式：通过在标签中指定事件和触发函数
+        //鼠标悬浮
+        function over(){
+            //获得d2的div块
+            var div = document.getElementsByClassName("d2")[0];
+            div.style.position="relative";  //相对定位：相对于原来的自己的位置发生移动，保留原来的位置
+            div.style.left ="200px";
+        }
+
+        //鼠标离开
+        function out(){
+            //获得d2的div块
+            var div = document.getElementsByClassName("d2")[0];
+            div.style.position="relative";  //相对定位：相对于原来的自己的位置发生移动，保留原来的位置
+            div.style.left="0px";
+        }
+
+        //第二种方式：匿名操作方式  window.onload：优先加载body，再加载指定的标签对象
+        window.onload = function(){
+            var dd = document.getElementById("dd");
+            dd.onmouseover=function(){
+                dd.style.width="300px";
+                dd.style.backgroundColor="olive";
+            }
+        }
+
+    </script>
+
+</head>
+<body>
+    <div class="d d1" id="dd"></div>
+    <div class="d d2" onmouseover="over()" onmouseout="out()"></div>
+</body>
+</html>

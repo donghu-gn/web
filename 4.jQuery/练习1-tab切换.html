@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习1-tab切换</title>
+    <style>
+        ul li {
+            list-style: none;
+            float: left;
+            margin-left: 30px;
+        }
+
+        div {
+            clear: left;
+        }
+    </style>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script>
+
+        $(function () {
+
+            $("li").click(function () {
+                //获取点击li的下标
+                var index = $(this).index();
+                //获取对应li下标的div对象
+                var $div = $("div").eq(index);
+
+                //li
+                $(this).css({ "color": $div.css("background-color") });
+                $("li").not($(this)).css({"color":"black"});
+
+                //div
+                $div.show();
+                $("div").not($div).hide();
+
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <ul>
+        <li style="color:olive">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+
+    <div class="d1" style="width: 300px;height: 200px;background-color: olive;"></div>
+    <div class="d2" style="width: 300px;height: 200px;background-color: lightskyblue;display: none;"></div>
+    <div class="d3" style="width: 300px;height: 200px;background-color: palevioletred;display: none;"></div>
+
+</body>
+
+</html>

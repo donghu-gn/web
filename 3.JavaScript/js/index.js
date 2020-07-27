@@ -3,7 +3,7 @@
 /*
     一.JS数据类型
     1.1 弱类型语言 JS:var a=10;  Java:int a=10;
-    1.2 原始数据类型 number  string  boolean  引用数据类型  Object
+    1.2 原始数据类型 number  string  boolean  Undefined  引用数据类型  Object
     1.3 通过var进行声明变量，根据你的赋值情况来判定当前数据的类型，可以通过typeof查看数据类型
  */
 // var a1 = 11;
@@ -128,8 +128,8 @@
 
 
 /*
-    四.控制和循环语句
-    if语句  switch...case语句   for循环语句
+    四.控制语句
+    if语句  switch...case语句
  */
 //if语句
 // var a = 10;
@@ -139,7 +139,7 @@
 //     alert("a大于10");
 // }
 
-//switch语句
+//switch语句  string  boolean
 // var a = false;
 // switch (a) {
 //     case true:
@@ -153,6 +153,11 @@
 //         break;
 // }
 
+
+/*
+    五.循环语句
+    for循环   while循环   do...while循环   break;  跳出当前循环   continue; 跳出本次循环,开启新的循环
+ */
 //for循环
 //var arr = ["aaa","bbb","ccc"];
 // for(var i=0;i<arr.length;i++){
@@ -190,9 +195,9 @@ alert("sum = "+sum);
 
 
 //continue; 跳出本次循环,开启新的循环
+//输出奇数的和
 // var sum = 0;
 // for(var i=1;i<=10;i++){
-//     //输出奇数的和
 //     if(i%2==0){ //i偶数
 //         continue;
 //     }

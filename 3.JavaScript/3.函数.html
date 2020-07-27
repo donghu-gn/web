@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>函数</title>
+
+    <script>
+
+        //1.无参函数
+        //声明函数
+        // function fun1(){
+        //     document.write("<h1>今天星期一</h1>");
+        // }
+        //调用函数
+        // fun1();
+
+        //2.单参函数
+        // function fun2(a1) {
+        //     document.write("<h1>"+a1+"</h1>");
+        //     document.write("<h1>"+arguments[0]+"</h1>");
+        //     document.write("<h1>"+arguments[1]+"</h1>");  //undefined
+        // }
+        // fun2("明天周二");
+
+        //3.多参函数  在函数里面，会将这些参数放在arguments对象里，arguments是一个数组
+        // function fun3(a1,a2,a3) {
+        //     document.write("<h1>"+a1+a2+a3+"</h1>");
+        //     document.write("<h1>"+arguments[0]+arguments[1]+arguments[2]+"</h1>");
+        //     document.write("<h1>"+arguments[3]+"</h1>");
+        // }
+        // fun3("aaa","bbb","ccc"); //undefined
+
+        //4.返回值函数
+        // function fun4() {
+        //     var str = "abc";
+        //     return str;
+        // }
+        // var a = fun4();
+        // alert("a = "+a);
+
+        //5.递归函数
+        // function fun5() {
+        //     var str = "abc";
+        //     document.write("<h1>"+str+"</h1>");
+        //     //自己调用自己
+        //     fun5();
+        // }
+        // fun5();
+
+        //6.匿名函数 function(){}   标签对象.事件 = function(){}
+
+        //7.构造函数
+        /*
+            构造函数和普通的函数一样，但是具有以下两个特殊性质。
+            1).通常构造函数的首字母是大写的（让识别构造函数变得更容易）。
+            2).构造函数通常要和 new 操作符结合，用来构造新对象。
+         */
+        function Fun() {
+            //var  声明局部变量
+            var username = "zhangsan";
+            var password = "123";
+
+            //this 声明属性
+            this.username = "lisi";
+            this.password = "111";
+        }
+        //创建对象  new 构造函数();
+        var f = new Fun();
+        //使用属性
+        alert(f.username);   //lisi
+        alert(f.password);   //111
+
+        //全局变量
+        // var a = 20;
+        // function fun(){
+        //     //局部变量
+        //     var a = 10;
+        //
+        //     alert(a);  //10
+        //     alert(this.a);  //20  this相当于Window对象，Window代表的是全局对象
+        // }
+        // fun();
+
+
+
+    </script>
+
+</head>
+<body>
+
+</body>
+</html>

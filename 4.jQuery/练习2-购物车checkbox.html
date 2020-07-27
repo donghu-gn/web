@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>练习2-购物车</title>
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script>
+        
+        $(function(){
+            //点击全选按钮
+            $(".all").click(function(){
+                var ck = $(this).prop("checked");
+                $(".all").prop("checked",ck);
+                $(".single").prop("checked", ck);
+            });
+
+            //点击单选按钮
+            $(".single").click(function(){
+                checkAll();
+            });
+
+
+            function checkAll(){
+                var all = true;
+                $(".single").each(function(){
+                    var ck = $(this).prop("checked");
+                    if(!ck){
+                        all = false;
+                    }
+                });
+                $(".all").prop("checked", all);
+            }
+
+
+            //点击反选按钮
+            $(".reverse").click(function(){
+                $(".single").each(function(){
+                    var ck = $(this).prop("checked");
+                    ck = !ck;
+                    $(this).prop("checked",ck);
+                });
+                checkedAll();
+            });
+        });
+        
+        
+    </script>
+</head>
+<body>
+    <input type="checkbox" class="all">全选
+    <input type="checkbox" class="single">单选1
+    <input type="checkbox" class="single">单选2
+    <input type="checkbox" class="single">单选3
+    <input type="checkbox" class="reverse">反选
+</body>
+</html>

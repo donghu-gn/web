@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>对象</title>
+
+    <script>
+
+        //1.String 字符串
+        // //第一种方式：赋值   单引号或双引号
+        // var str1 = "aaa@qq.com";
+        // //第二种方式：赋值   new String();
+        // var str2 = new String("   abc@qq.com   ");
+        // //1.1 长度属性   16
+        // document.write("<p style='color: brown'>"+str2.length+"</p>");
+        // //1.2 某个字符串出现的位置  7
+        // document.write("<p style='color: olive'>"+str2.indexOf('qq')+"</p>");
+        // //1.3 替换指定字符串
+        // document.write("<p style='color: orange'>"+str2.replace('qq','ss')+"</p>");
+        // //1.4 截取字符串
+        // //substr(start起始位置,count截取多少个)
+        // document.write("<p style='color: blueviolet'>"+str2.substr(3,3)+"</p>");
+        // //substring(start起始位置,end截止位置)  end位置取不到
+        // document.write("<p style='color: blueviolet'>"+str2.substring(3,6)+"</p>");
+        // //1.5 大写
+        // document.write("<p style='color: olive'>"+str2.toUpperCase()+"</p>");
+        // //1.6 拼接
+        // document.write("<p style='color: olive'>"+str2.concat(str1)+"</p>");
+        // //1.7 去除头尾空格   10
+        // document.write("<p style='color: olive'>"+str2.trim().length+"</p>");
+
+
+        //2.Object 对象
+        // var obj1 = {};    //空的object，对象是存在的，其中属性和方法未定义
+        // var obj2 = null;  //空对象，对象是不存在的
+        //
+        // //2.1 通过new创建对象，来通过对象.属性名来赋值或者使用其值
+        // var person = new Object();
+        // person.username = "张三";
+        // person.password = "123";
+        //
+        // //2.2 字面量 在{"key":value}中声明属性及其值
+        // var p = {
+        //     "name":"李四",
+        //     "age":12
+        // };
+        //
+        // //使用对象的属性  方式一：对象名.属性名   方式二：对象["key"]
+        // document.write("person的名称："+person.username+"<br>")
+        // document.write("person的密码："+person["password"]+"<br>")
+        // document.write("p的名称："+p.name+"<br>")
+
+
+        //3.Array 数组
+        // //3.1 通过new创建
+        // var arr1 = new Array();
+        // arr1[0] = 111;
+        // arr1[1] = 222;
+        //
+        // //3.2 字面量
+        // var arr2 = ["aaa","bbb","ccc"];
+        // //取值  数组名[下标]
+        // document.write("取值："+arr2[0]+"<br>");
+        // //赋值  数组名[下标]=值
+        // arr2[3] = "eee";
+        // document.write("赋值："+arr2+"<br>");
+        // //替换值  数组名[下标]=值
+        // arr2[2] = "CCC";
+        // document.write("替换值："+arr2+"<br>");
+        //
+        // //拼接方法
+        // //数组之间拼接
+        // document.write(arr1.concat(arr2)+"<br>");
+        // //数组的元素通过#拼接
+        // document.write(arr1.join("#")+"<br>");
+        //
+        // //堆栈操作的方法
+        // //push() 在末尾添加
+        // arr1.push(333);
+        // document.write(arr1+"<br>")
+        //
+        // //pop()  删除末尾
+        // arr1.pop();
+        // document.write(arr1+"<br>")
+        //
+        // //shift()   删除顶端
+        // arr2.shift();
+        // document.write(arr2+"<br>")
+        //
+        // //unshift() 在顶端添加
+        // arr2.unshift("ddd");
+        // document.write(arr2+"<br>");
+        //
+        // //reverse() 反转
+        // arr2.reverse();
+        // document.write(arr2+"<br>");
+        //
+        // //sort() 排序  自然顺序
+        // arr2.sort();
+        // document.write(arr2+"<br>");
+        //
+        // var arr3 = [5,15,105,1005];
+        // document.write(arr3.sort()+"<br>");
+        //
+        // //自定义排序规则：按照数值大小进行排序
+        // function compare(v1,v2){
+        //     return v1 - v2;
+        // }
+        // document.write(arr3.sort(compare)+"<br>");
+
+
+        //4.Math 数学
+        // document.write("求最大值："+Math.max(12,32)+"<br>");
+        // document.write("随机数："+Math.random()+"<br>");
+
+
+        //5.Date 时间
+        // var today = new Date();
+        // document.write(today.getFullYear()+"<br>");
+        // document.write(today.getMonth()+1+"<br>");
+        // document.write(today.getDate()+"<br>");
+        // document.write(today.getDay()+"<br>");  //星期
+        // document.write(today.getHours()+"<br>");
+        // document.write(today.getMinutes()+"<br>");
+        // document.write(today.getSeconds()+"<br>");
+        //
+        // //2020/7/27 上午10:46:22
+        // document.write(today.toLocaleString()+"<br>");
+        // //Mon Jul 27 2020
+        // document.write(today.toDateString()+"<br>");
+        // //10:46:22 GMT+0800 (中国标准时间)
+        // document.write(today.toTimeString()+"<br>");
+
+        //6.正则表达式  RegExp
+        var str = "hello world";
+
+        //创建正则表达式
+        var reg1 = new RegExp("a");
+        //test() 若包含返回true，不包含返回false
+        document.write(reg1.test(str)+"<br>");  //false
+
+        //创建正则表达式
+        var reg2 = new RegExp("o","g");
+        //exec() 若包含返回查询的数据，不包含返回null
+        var count = 0;
+        var flag = reg2.exec(str);
+        while (flag!=null){
+            //包含的
+            count++;
+            document.write(flag+"<br>");  //false
+            flag = reg2.exec(str);
+        }
+        document.write("o出现次数："+count+"<br>");  //2
+
+    </script>
+
+
+</head>
+<body>
+
+</body>
+</html>

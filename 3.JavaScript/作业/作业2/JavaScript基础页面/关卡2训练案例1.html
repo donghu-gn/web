@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>new document</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<script type="text/javascript">
+			window.onload=function(){
+				document.getElementById("table").style.background = "pink";
+				setInterval("highlight()",200);//添加定时器，使得新添加的数据也具有颜色变化效果
+			}
+			
+			//highlight方法实现更换换色功能
+			function highlight(){
+				
+			}
+		</script>
+	</head>
+	<body>
+		<table border="1" id="table" style="width: 50%">
+			<tr>
+				<th>学号</th>
+				<th>姓名</th>
+				<th>操作</th>
+			</tr>
+			<tr>
+				<td>niit001</td>
+				<td>zhangsan</td>
+				<td><a href="javascript:void(0);" >删除</a></td>
+			</tr>
+			<tr>
+				<td>niit002</td>
+				<td>lisi</td>
+				<td><a href="javascript:void(0);">删除</a></td>
+			</tr>
+		</table>
+		<br />
+		<label>学号：<input type="text" size=20 id="xh" /></label>
+		<label>姓名：<input type="text" size=20 id="name" /></label>
+		<input type="button" value="添加一行数据"  />
+	
+	</body>
+</html>
