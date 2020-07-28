@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery筛选</title>
+    <script src="js/jquery-1.11.0.min.js"></script>
+
+    <style>
+
+        .d{
+            width: 200px;
+            height: 200px;
+            background-color: cadetblue;
+        }
+
+    </style>
+
+    <script>
+
+        $(function () {
+
+            //一.过滤
+            //1.1 eq(index|-index) 通过下标返回指定元素的jQuery对象，正数从前往后，负数倒过来，从0开始
+            //$(".d").eq(1).css({"background-color":"olive"});
+            //$(".d").eq(-1).css({"background-color":"pink"});
+
+            //1.2 first() 获取第一个元素
+            //$(".d").first().css({"background-color":"olive"});
+
+            //1.3 last() 获取最后一个元素
+            //$(".d").last().css({"background-color":"pink"});
+
+            //1.4 hasClass(class) 检查当前的元素是否含有某个特定的类，如果有，则返回true。
+            //alert($(".d").hasClass("on"));
+
+            //1.5 filter(expr|obj|ele|fn) 筛选出与指定表达式匹配的元素集合。
+            //通过过滤器筛选出来所有div块中有class属性为on的元素
+            /*var ds = $("div").filter(function () {
+                return $(this).hasClass("on");
+            });
+            for(var i=0;i<ds.length;i++){
+                //ds[i] 通过下标取出来元素，它是DOM对象   $(ds[i]) 加上$之后，可变为jQuery对象
+                $(ds[i]).css({"background-color":"pink"});
+            }*/
+
+            //1.6 is(expr|obj|ele|fn) 若有符合元素则返回true
+            /*$("p,div").click(function () {
+                alert($(this).is("div"));
+            })*/
+
+            //1.7 map(callback)
+            /*var str = $("p").map(function(){
+                return $(this).text();
+            }).get().join("#");
+            alert(str);*/
+
+            //1.8 has(expr|ele) 保留包含特定后代的元素，去掉那些不含有指定后代的元素。
+            //$("li").has(".u2").css({"color":"red"});
+
+            //1.9 not(expr|ele|fn) 从匹配元素的集合中删除与指定表达式匹配的元素
+            //$("p").not(".on").css({"color":"red"});
+
+            //1.10 slice(start,[end]) 选取从start开始，取不到end的，从0开始，若为负数表示从后往前
+            //$("p").slice(0,2).css({"color":"red"});
+            //$("p").slice(-1).css({"color":"red"});  //获取最后一个p元素
+
+
+            //二.查找
+            //2.1 children([expr])取得一个包含匹配的元素集合中每个元素所有子元素的元素集合。
+            $(".u2").children("li").css({"color":"red"});
+
+            //2.2 find(e|o|j) 搜索所有与指定表达式匹配的元素。正在处理的元素的后代元素。
+            /*$(".u1").find("div").css({
+                "width":"100px",
+                "height":"100px",
+                "background-color":"orange"
+            });
+            */
+
+            //2.3 next([expr])取得一个包含匹配的元素集合中每一个元素紧邻的后面同辈元素的元素集合。
+            /*alert($("p").next(".on").text());
+
+            $("p").next(".on").css({
+                "background-color":"orange"
+            });*/
+
+        });
+
+    </script>
+
+</head>
+<body>
+
+    <p>111111</p>
+    <p class="on">222222</p>
+    <p id="p3">333333</p>
+
+    <ul class="u1">
+        <li>111111
+            <ul class="u2">
+                <li>aaa</li>
+                <li>bbb</li>
+                <li>ccc</li>
+                <div></div>
+            </ul>
+        </li>
+        <li>222222
+            <ul class="u3">
+                <li>aaa</li>
+                <li>bbb</li>
+                <li>ccc</li>
+            </ul>
+        </li>
+        <li>333333</li>
+        <div></div>
+    </ul>
+
+    <div class="d d1"></div>
+    <div class="d d2 on"><p>XXXXX</p></div>
+    <div class="d d3 on"></div>
+
+</body>
+</html>

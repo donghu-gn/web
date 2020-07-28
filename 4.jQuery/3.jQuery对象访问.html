@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery对象访问</title>
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <style>
+
+        .on{
+            color:green;
+        }
+
+        #on{
+            color:red;
+        }
+
+    </style>
+
+    <script>
+
+        $(function(){
+
+            //1.each(callback) ：迭代符合选择器的所有元素
+            //迭代遍历所有li元素
+            /*$("li").each(function () {
+                //当前点击的li
+                $(this).click(function () {
+                    //给当前点击的li添加属性
+                    //$(this).attr("class","on");
+                    //$(this).prop("id","on");
+                    //$(this).addClass("on");
+
+                    //移除属性
+                    //$(this).removeAttr("class");
+                    //$(this).removeProp("class");
+                    //$(this).removeClass("class");
+                });
+            })*/
+
+            //2.length：符合选择器的元素的个数。
+            //alert($("li").length);
+
+            //3.selector：返回你用什么选择器来找到这个元素的。
+            //alert($("li").selector);
+
+            //4.get([index]) 返回的是所选中的元素，下标从0开始，返回的是DOM对象
+            // var li1 = $("li").get(1);
+            // alert(li1);   //[object HTMLLIElement]
+            // alert(li1.innerText);  //bbbbbb
+
+            //:eq(index) 返回的是所选中的元素，下标从0开始，返回的是jQuery对象
+            // var $li2 = $("li:eq(2)");
+            // alert($li2);  //[object Object]
+            // alert($li2.text());  //cccccc
+
+            //5.index([selector|element]) 搜索匹配的元素,返回相应元素的索引值,从0开始计数。
+            //迭代遍历所有的li元素
+            $("li").each(function () {
+                $(this).click(function () {
+                    //$(this) 当前正在点击的li元素
+                    var $l = $(this);
+                    //$l.index() 获取当前正在点击的li元素的下标
+                    //alert($l.index());
+
+                    //改变点击的li元素
+                    $l.attr("class","on");
+
+                    //改变未被点击的li( 不是$(this) )元素
+                    $("li").not($l).removeAttr("class");
+                });
+            });
+
+        });
+
+    </script>
+</head>
+<body>
+    <ul>
+        <li>aaaaaa</li>
+        <li>bbbbbb</li>
+        <li>cccccc</li>
+        <li>dddddd</li>
+        <li>eeeeee</li>
+    </ul>
+</body>
+</html>
