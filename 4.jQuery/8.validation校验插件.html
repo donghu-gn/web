@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>validation校验插件</title>
+
+    <!-- 先导入jquery资源 -->
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <!-- 导入validation校验库 -->
+    <script src="validate/jquery.validate.min.js"></script>
+    <!-- 导入国际化资源库 -->
+    <script src="validate/messages_zh.js"></script>
+
+    <style>
+
+        /* 设置出现错误时，元素标签样式 */
+        label.error{
+            background: url("img/unchecked.gif") no-repeat 10px 3px;
+            padding-left:30px;
+            font-size: 15px;
+            color: red;
+        }
+
+        /* 设置出现正确时，元素标签样式 */
+        label.success{
+            background: url("img/checked.gif") no-repeat 10px 3px;
+            padding-left:30px;
+        }
+
+    </style>
+
+    <script>
+
+        $(function () {
+
+            //$("表单").validate({ 校验规则rules , 校验信息messages });
+            $("#loginForm").validate({
+
+                //校验规则:{ name属性值:{ required:true , ... } , ... }
+                rules:{
+                    username:{
+                        //姓名不能为空
+                        required:true,
+                        //长度至少6位
+                        minlength:6
+                    },
+                    password:{
+                        required:true,
+                        digits:true,
+                        minlength: 6
+                    }
+                },
+
+                //校验信息
+                messages:{
+                    username:{
+                        required:"姓名不能为空",
+                        minlength:"姓名长度至少6位"
+                    },
+                    password:{
+                        required:"密码不能为空",
+                        digits:"密码必须是数字组成",
+                        minlength: "密码长度至少6位"
+                    }
+                },
+
+                //校验成功之后，执行回调函数 ， 添加class="success"属性
+                success:function (label) {  //label 校验时出现错误，产生一个label标签
+                    //出现正确结果，校验通过：第一步 清空错误提示信息 ， 第二部：加上自定义的class属性success
+                    label.text("").addClass("success");
+                }
+
+            });
+
+        });
+
+    </script>
+
+
+</head>
+<body>
+
+    <form id="loginForm" action="#">
+        username:<input type="text" name="username" /><br/>
+        password:<input type="password" name="password" /><br/>
+        <input type="submit" value="登录"/>
+    </form>
+
+</body>
+</html>
