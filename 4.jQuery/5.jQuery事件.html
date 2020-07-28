@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery事件</title>
+    <style>
+
+        .d{
+            width: 200px;
+            height: 200px;
+        }
+
+        .d1{
+            background-color: lightcoral;
+        }
+
+        .d2{
+            background-color: cadetblue;
+        }
+
+        .d3{
+            background-color: orangered;
+        }
+
+
+    </style>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script>
+
+        $(function(){
+
+            //1.bind() 向匹配元素附加一个或更多事件处理器  语法:$(selector).bind({event:function(){}, event:function(){}, ...})
+            /*$(".d1").bind({
+                mouseover:function(){
+                    $(this).css({"width":"300px"});
+                },
+                mouseout:function(){
+                    $(this).css({"width":"200px"});
+                },
+                click:function(){
+                    $(this).css({"background-color":"maroon"});
+                }
+            });*/
+
+            //2.blur() 当元素失去焦点时发生 blur 事件。语法:$(selector).blur(function)
+            /*$(":text").blur(function () {
+                $(".d1").css({"width":"300px"});
+            });*/
+
+            //3.当元素的值发生改变时会发生 change 事件。该事件仅适用于文本域（text field），以及textarea和select元素。语法:$(selector).change(function)
+            /*$(":text").change(function () {
+                $(".d1").css({"background-color":"maroon"});
+            });*/
+
+            //5.当双击元素时，会发生 dblclick 事件。语法:$(selector).dblclick(function)
+            /*$(".d1").dblclick(function () {
+                $(this).css({"background-color":"maroon"});
+            });*/
+
+            //6.delegate() 方法为指定的元素（属于被选元素的子元素）添加一个或多个事件处理程序，并规定当这些事件发生时运行的函数。使用 delegate() 方法的事件处理程序适用于当前或未来的元素（比如由脚本创建的新元素）。
+            //语法:$(selector).delegate(childSelector,event,data,function)
+            /*$(".d1").delegate('input','click dblclick',function (event) {
+                if(event.type == 'click' ){
+                    $(".d2").css({"background-color":"maroon"});
+                }else if(event.type == 'dblclick' ){
+                    $(".d2").hide();
+                }
+            });*/
+
+            //7.error() 元素遇到错误（没有正确载入） 语法:$(selector).error(function)
+            /*$("img").error(function () {
+                $(this).replaceWith("<h1>未正确加载图片</h1>");
+            })*/
+
+            //8.preventDefault() 方法阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）。语法:event.preventDefault()
+            //isDefaultPrevented()方法返回指定的event 对象上是否调用了preventDefault()方法。语法:event.isDefaultPrevented()
+            /*$(":submit").click(function (event) {
+                if($(":text").val().trim() == ""){
+                    //阻止提交表单
+                    event.preventDefault();
+                }
+                alert("是否阻止成功："+event.isDefaultPrevented());  //true
+            })*/
+
+            //9.focus() 当元素获得焦点时  语法:$(selector).focus(function)
+            /*$(":text").bind({
+                //失去焦点关注
+               blur:function () {
+                   $(".d1").css({"background-color":"lightcoral"});
+               },
+                //获得焦点关注
+               focus:function () {
+                   $(".d1").css({"background-color":"maroon"});
+               }
+            });*/
+
+            //12.resize() 当调整浏览器窗口的大小时，适用于 window 对象（浏览器窗口），发生 resize 事件.语法:$(selector).resize(function)
+            /*var count = 0;
+            $(window).resize(function () {
+                $("p").text(count+=1);
+            });*/
+
+            //13.scroll()当用户滚动指定的元素时;scroll 事件适用于所有可滚动的元素和 window 对象（浏览器窗口）。语法:$(selector).scroll(function)
+            /*$(window).scroll(function () {
+                if($(window).scrollTop()>200){
+                    $(".d2").hide();
+                }
+            });*/
+
+            //14.select()当 textarea 或文本类型的 input 元素中的文本被选择时，会发生 select 事件。语法:$(selector).select(function)
+            /*$(":text").select(function () {
+                alert(123)
+            });*/
+
+            //15.submit()当提交表单时该事件只适用于表单元素. 重写表单提交（新添加一些提交的规则） 语法:$(selector).submit(function)
+            $("form").submit(function(event){
+                var name = $(":text").val();
+                if(name==""){
+                    $("p").html("<h1 style='color:red'>用户名不能为空</h1>");
+                    //阻止提交表单
+                    //event.preventDefault();
+                    //返回false，不提交表单，此方式用的较多
+                    return false;
+                }
+                return true;
+            });
+
+
+        });
+
+
+    </script>
+</head>
+<body>
+    <form>
+        <!-- autocomplete="false" -->
+        <input type="text" name="username" id="username" />
+        <input type="submit" value="登录"/>
+    </form>
+
+    <!--<img src="img/paris.png" alt="请正确加载资源" />-->
+
+    <p></p>
+
+    <div class="d d1">
+        <input type="button" value="点我点我！" >
+    </div>
+    <div class="d d2"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+    <div class="d d3"></div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery事件对象</title>
+    <script src="js/jquery-1.11.0.min.js"></script>
+
+    <script>
+
+
+        $(function(){
+
+            //1.pageX属性，是鼠标指针的位置，相对于文档的左边缘。
+            //pageY属性，是鼠标指针的位置，相对于文档的上边缘。
+            /*$(document).mousemove(function (event) {
+                $(".p1").text("X:"+event.pageX +",Y:"+event.pageY);
+            });*/
+
+            //2.result属性，包含了当前事件最后触发的那个处理函数的返回值，除非值是 undefined。
+            /*$(":button").click(function (event) {
+                return ("最后一次点击位置：X:"+event.pageX+" , Y:"+event.pageY);
+            });
+
+            $(":button").click(function (event) {
+                $(".p1").html(event.result);
+            });*/
+
+
+            //3.target 属性，规定哪个 DOM 元素触发了该事件
+            /*function handler(event) {
+                var $target = $(event.target);
+                if( $target.is("li") ) {
+                    $target.children().toggle();
+                }
+            }
+            $("ul").click(handler).find("ul").hide();*/
+
+            //4.timeStamp 属性，返回事件触发时距离 1970 年 1 月 1 日的毫秒数。
+            /*$(":button").click(function(e){
+                $("p").text(e.timeStamp);
+            });*/
+
+            //5.type 属性，描述触发哪种事件类型。语法:event.type
+            /*$("p").bind('click dblclick mouseover mouseout',function(event){
+                $("p").html("Event: " + event.type);
+            });*/
+
+            //6.which 属性，指示按了哪个键或按钮。语法:event.which
+            $(":text").keydown(function (event) {
+                $(".p1").html("<h1 style='color: red'>key:"+event.which+"</h1>");
+                if(event.which==32){
+                    alert("按下空格键");
+                    $("ul li").css({"color":"cadetblue"});
+                }
+            })
+
+        });
+
+
+
+    </script>
+
+</head>
+<body>
+
+    <p class="p1">xxx</p>
+    <p class="p2"></p>
+
+    <input type="text" />
+    <input type="button" value="点我" />
+
+    <ul>
+        <li>111
+            <ul>
+                <li>aaa</li>
+                <li>bbb</li>
+                <li>ccc</li>
+            </ul>
+        </li>
+        <li>222
+            <ul>
+                <li>ddd</li>
+                <li>eee</li>
+                <li>fff</li>
+            </ul>
+        </li>
+        <li>333
+            <ul>
+                <li>ggg</li>
+                <li>hhh</li>
+                <li>iii</li>
+            </ul>
+        </li>
+    </ul>
+
+</body>
+</html>
