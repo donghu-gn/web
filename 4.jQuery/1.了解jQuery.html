@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>了解jQuery</title>
+    <script src="js/jquery-1.11.0.min.js"></script>
+
+    <script>
+
+        $(function(){
+            //$("选择器").触发事件的动作(function(){ 触发后做的事情 });
+            $(".btn").click(function(){
+                //获得p标签的文本
+                alert($("p").text());
+                //改变div的样式
+                $("#d").css({"width":"200px" , "height":"200px" , "background-color":"olive"});
+            });
+        });
+
+    </script>
+
+</head>
+<body>
+    <p>今天星期二</p>
+    <div id="d"></div>
+    <input type="button" class="btn" value="点击我"/>
+</body>
+</html>

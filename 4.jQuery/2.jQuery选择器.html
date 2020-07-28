@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery选择器</title>
+    <script src="js/jquery-1.11.0.min.js"></script>
+
+    <script>
+
+        $(function () {
+
+            //1.使用#id;  如：$("#lastname") 选择id="lastname" 的元素
+            //$("#p3").hide();
+            //document.getElementById("p3").style.display="none";
+
+            //4.使用.class.class; 如：$(".intro.demo")所有class="intro"且class="demo"的元素
+            //$(".d.d1").css({"width":"300px","height":"300px","border":"3px solid red"});
+
+            //6.使用:first;    如：$("p:first")   第一个 <p> 元素 .其中:冒号前面可以用选择器：class或id或元素都可以。
+            //alert($("p:first").text());
+
+            //7.使用:last;     如：$("p:last")    最后一个 <p> 元素.其中:冒号前面可以用选择器：class或id或元素都可以。
+            //alert($("p:last").text());
+
+            //8.使用:even;     如：$("tr:even")   所有偶数 <tr> 元素
+            //$("tr:even").css({"background-color":"olive"});
+
+            //9.使用:odd;      如：$("tr:odd")    所有奇数 <tr> 元素
+            //$("tr:odd").css({"background-color":"maroon"});
+
+            //10.使用element element;     如：$("ul li") 列表中ul中的所有li都被选中
+            //$("ul li").css({"color":"red"});
+
+            //11.使用:eq(index);   如：$("ul li:eq(3)") 列表中的第四个元素（index 从 0 开始）
+            //$("ul li:eq(0)").css({"color":"olive"});
+
+            //12.使用:gt(no); 如：$("ul li:gt(1)")列出 index 大于 1 的元素（index 从 0 开始）
+            //$("ul li:gt(0)").css({"color":"olive"});
+
+            //13.使用:lt(no);    如：$("div:lt(2)")列出 div 小于 2的元素（index 从 0 开始）
+            //$("ul li:lt(2)").css({"color":"olive"});
+
+            //14.使用:empty;     如：$("div:empty")  div块下无子（元素）节点的所有元素
+            //$(".d:empty").css({"width":"300px","height":"300px","background-color":"maroon"});
+
+            //15.使用:not(selector); 如：$("td:not(:empty)")    所有不为空的表格中的td元素
+            //$(".d:not(:empty)").css({"width":"300px","height":"300px","background-color":"maroon"});
+
+            /*
+             * 16.  :input   $(":input")    所有 <input> 元素
+             *      :text  $(":text") 所有 type="text" 的 <input> 元素
+             *      :selected  $(":selected") 所有被选中的 input 元素
+             */
+            //$(":input").css({"background-color":"lightgrey"});
+            //$(":text").css({"background-color":"lightgrey"});
+            alert($(":selected").val());
+        });
+
+
+    </script>
+
+</head>
+<body>
+
+    <div class="d d1"></div>
+    <div class="d d2"><p>XXXXX</p></div>
+    <div class="d d3"></div>
+
+    <p>111111</p>
+    <p>222222</p>
+    <p id="p3">333333</p>
+
+    <ul>
+        <li>aaaaaa</li>
+        <li>bbbbbb</li>
+        <li>cccccc</li>
+    </ul>
+
+    <form action="#">
+        username:<input type="text" name="username" placeholder="填写姓名"/>
+        password:<input type="password" name="password" />
+        address:
+        <select name="address">
+            <option value="上海">上海</option>
+            <option value="南京" selected>南京</option>
+            <option value="无锡">无锡</option>
+        </select>
+    </form>
+
+    <table border="1px" cellspacing="0" cellpadding="10px">
+        <tr>
+            <th>姓名</th>
+            <th>年龄</th>
+            <th>性别</th>
+        </tr>
+        <tr>
+            <td>张三</td>
+            <td>12</td>
+            <td>男</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>22</td>
+            <td>女</td>
+        </tr>
+        <tr>
+            <td>王二</td>
+            <td>32</td>
+            <td>男</td>
+        </tr>
+    </table>
+
+</body>
+</html>
