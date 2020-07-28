@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换</title>
+
+    <style>
+
+        .d{
+            width: 300px;
+            height: 200px;
+            /* 清除上方浮动效果 */
+            clear: left;
+        }
+
+        .d1{
+            background-color: lightcoral;
+        }
+
+        .d2{
+            background-color: cadetblue;
+            display: none;
+        }
+
+        .d3{
+            background-color: darkseagreen;
+            display: none;
+        }
+
+        ul li{
+            list-style: none;
+            /* 浮动：脱离文档流 */
+            float: left;
+            margin-left: 30px;
+        }
+
+    </style>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+
+    <script>
+
+        $(function () {
+            $("li").click(function () {
+                //获取当前正在点击的li元素的下标
+                var index = $(this).index();
+                //alert(index);
+
+                //获取点击的li的相同位置的div对象
+                var $div = $("div").eq(index);
+
+                //处理li
+                //1.将正在点击的li的颜色切换成当前位置div的背景色
+                $(this).css({
+                    "color": $div.css("background-color")
+                });
+                //2.将未点击的li的颜色切换成黑色
+                $("li").not($(this)).css({
+                    "color":"black"
+                });
+
+                //处理div
+                //1.将正在点击的li所对应匹配的div显示出来
+                $div.show();
+                //2.将未被点击的li所对应的div隐藏起来
+                $("div").not($div).hide();
+            });
+        });
+
+    </script>
+
+
+</head>
+<body>
+
+    <ul>
+        <li style="color: lightcoral">tab1</li>
+        <li>tab2</li>
+        <li>tab3</li>
+    </ul>
+
+    <div class="d d1"></div>
+    <div class="d d2"></div>
+    <div class="d d3"></div>
+
+</body>
+</html>
