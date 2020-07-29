@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+</head>
+<body>
+请输入爱好：<input type="text" id="id"/> 
+<br/><br/>
+爱好下拉列表：<select name="love" id="sId">
+	<option value="0">--请选择--</option>
+	<option value="篮球">篮球</option>
+	<option value="网球">网球</option>
+	<option value="足球">足球</option>
+	<option value="乒乓球">乒乓球</option>
+</select>
+<br/><br/>
+<input type="button" value="判断" onclick="selectValue();"/>
+</body>
+<script type="text/javascript">
+	function selectValue() {
+		var loveValue = $("#id").val();
+		$("#sId option[value='"+loveValue+"']").prop("selected","selected");
+	}
+	
+
+
+</script>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<script src="js/jquery-1.11.3.js" type="text/javascript" charset="utf-8"></script>
+		<!--validate校验库-->
+		<script src="js/jquery.validate.js" type="text/javascript" charset="utf-8"></script>
+		<!--导入国际化资源文件（中文提示）-->
+		<script src="js/messages_zh.js" type="text/javascript" charset="utf-8"></script>
+		
+<script type="text/javascript">
+	$(function(){
+		// 数据格式：{ k:v , k:v , }
+		// 规定：使用rules 关键字设置规则
+		// * 设置规则可以有多个元素 {元素名：约束}
+		// * 约束可能多个 {约束名：值}
+		
+		$("#formId").validate({
+			//设定规则
+			rules:{
+				username:"required",			//简化版，只能设置一个检验规则
+				password:{
+					required:true,				//标准版，可以设置多个校验规则
+					number:true
+				},
+				repassword:{
+					required:true,
+					equalTo:"[name='password']"
+				}
+			},
+			//设置消息（提示信息）
+			messages:{
+				username:{
+					required:"用户名不能为空"
+				}
+			}
+			
+		});
+	});
+</script>
+	</head>
+	<body>
+		<form id="formId" action="">
+			用户名：<input type="text" name="username"/> <br/>
+			密码：<input type="password" name="password"/> <br />
+			密码：<input type="password" name="repassword"/> <br />
+			<input type="submit" value="提交"/>
+		</form>
+	</body>
+</html>

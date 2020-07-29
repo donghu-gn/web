@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.8.3.js"></script>
+<style type="text/css">
+	.diveven { background:#bbffaa;}
+</style>
+</head>
+<body>
+<div style="width:100px;height:100px;border:1px solid;display:none">中国万岁</div>
+<div style="width:100px;height:100px;border:1px solid;display:none">世界万岁</div>
+<div style="width:100px;height:100px;border:1px solid;">宇宙万岁</div>
+	
+	<input type="button" value="显示并且变颜色"onclick="showContent();"/>
+</body>
+<script type="text/javascript">
+
+	function showContent() {
+		
+		$('div:hidden').show(1000).addClass("diveven");
+	}
+
+</script>
+</html>
+
+
+
+
+
+
+
