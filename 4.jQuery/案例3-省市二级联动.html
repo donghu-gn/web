@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>注册界面-省市二级联动</title>
+
+    <style>
+        #contanier{
+            border: 0px solid white;
+            width: 1300px;
+            margin: auto;
+        }
+
+        #top{
+            border: 0px solid white;
+            width: 100%;
+            height: 50px;
+        }
+        #menu{
+            border: 0px solid white;
+            height: 40px;
+            background-color: black;
+            padding-top: 10px;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+        .top{
+            border: 0px solid white;
+            width: 405px;
+            height: 100%;
+            float: left;
+            padding-left: 25px;
+        }
+        #top1{
+            padding-top: 15px;
+        }
+        #bottom{
+            margin-top: 13px;
+            text-align: center;
+        }
+
+        #form{
+            height: 500px;
+            padding-top: 70px;
+            background-image: url(img/regist_bg.jpg);
+            margin-bottom: 10px;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        label.error{
+            background:url(img/unchecked.gif) no-repeat 10px 3px;
+            padding-left: 30px;
+            font-family:georgia;
+            font-size: 15px;
+            font-style: normal;
+            color: red;
+        }
+
+        label.success{
+            background:url(img/checked.gif) no-repeat 10px 3px;
+            padding-left: 30px;
+        }
+
+        #father{
+            border: 0px solid white;
+            padding-left: 307px;
+        }
+
+        #form2{
+            border: 5px solid gray;
+            width: 660px;
+            height: 450px;
+        }
+
+    </style>
+
+    <script src="js/jquery-1.11.0.min.js"></script>
+    <script>
+
+        $(function () {
+
+            //定义一个二维数组，存放省对应位置的市
+            var citys = new Array(3);
+            citys[0] = new Array("南京市","苏州市","无锡市","常州市");
+            citys[1] = new Array("合肥市","淮南市","蚌埠市","滁州市");
+            citys[2] = new Array("武汉市","黄冈市","黄石市","十堰市");
+            citys[3] = new Array("长沙市","湘潭市","衡阳市","株洲市");
+
+            //1.给籍贯中的省添加change事件
+            $("#address").change(function () {
+
+                //清空城市下拉菜单
+                $("#city").empty();
+
+                //2.获取省选中的value值
+                var val = $(this).val();
+                //alert(val)
+
+                //3.一旦省发生改变，就会触发市的内容变化
+                //遍历二维数组的第一个维度，传递下标
+                $.each(citys,function (i,n) {
+                    //alert("数组的下标 = "+i)  // 0
+                    //alert("对应下标的数组项 = "+n)  // 南京市,苏州市,无锡市,常州市
+
+                    //4.判断选择的省份是否与遍历数组的项一致，若一致则取出数组的项，填充至city城市
+                    if(val == i){
+
+                        //遍历二维数组的第二个维度
+                        $.each(citys[i] , function (j,m) {
+                            //alert("第二个维度的数组的下标 = "+j);  //0
+                            //alert("对应下标的数组项 = "+m);  //南京市
+
+                            //取出数组的项，填充至city城市
+                            var $option = $("<option value='"+j+"'>"+m+"</option>");
+                            $option.appendTo("#city");
+                        })
+
+                    }
+
+                })
+
+            })
+
+        })
+
+    </script>
+</head>
+<body>
+<div id="contanier">
+    <div id="top">
+        <div class="top">
+            <img src="img/logo.png" height="47px"/>
+        </div>
+        <div class="top">
+            <img src="img/header.png" height="45px" />
+        </div>
+        <div class="top" id="top1">
+            <a href="#">登录</a>
+            <a href="#">注册</a>
+            <a href="#">购物车</a>
+        </div>
+    </div>
+    <div id="menu">
+        <a href="#"><font size="5" color="white">首页</font></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#"><font color="white">电脑办公</font></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#"><font color="white">手机数码</font></a>&nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#"><font color="white">鞋靴箱包</font></a>
+    </div>
+    <div id="form">
+        <form action="#" method="get" id="registForm">
+            <div id="father">
+                <div id="form2">
+                    <table border="0px" width="100%" height="100%" align="center" cellpadding="0px" cellspacing="0px" bgcolor="white">
+                        <tr>
+                            <td colspan="2" >
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <font size="5">会员注册</font>&nbsp;&nbsp;&nbsp;USER REGISTER
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="180px">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                <label for="user" >用户名</label>
+                            </td>
+                            <td>
+                                <em style="color: red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" name="user" size="35px" id="user"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                密码
+                            </td>
+                            <td>
+                                <em style="color: red;">*</em>&nbsp;&nbsp;&nbsp;<input type="password"  name="password" size="35px" id="password" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                确认密码
+                            </td>
+                            <td>
+                                <em style="color: red;">*</em>&nbsp;&nbsp;&nbsp;<input type="password" name="repassword" size="35px"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                Email
+                            </td>
+                            <td>
+                                <em style="color: red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" name="email" size="35px" id="email"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                姓名
+                            </td>
+                            <td>
+                                <em style="color: red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" name="username" size="35px"/>
+                            </td>
+                        </tr>
+                        <!-- 籍贯 -->
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                籍贯
+                            </td>
+                            <td>
+                                <em style="color: red;">*</em>&nbsp;&nbsp;&nbsp;
+                                <!-- 需要给籍贯添加onchange事件 -->
+                                <select id="address" name="address">
+                                    <option>--请选择--</option>
+                                    <option value="0">江苏</option>
+                                    <option value="1">安徽</option>
+                                    <option value="2">湖北</option>
+                                    <option value="3">湖南</option>
+                                </select>
+                                <select id="city" name="city">
+
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                性别
+                            </td>
+                            <td>
+										<span style="margin-right: 155px;">
+											<em style="color: red;">*</em>&nbsp;&nbsp;&nbsp;<input type="radio" name="sex" value="男"/>男
+											<input type="radio" name="sex" value="女"/>女<em></em>
+										</span>
+                                <label for="sex" class="error" style="display: none;"></label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;
+                                出生日期
+                            </td>
+                            <td>
+                                <em style="color: red;">*</em>&nbsp;&nbsp;&nbsp;<input type="text" name="birthday"  size="35px"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                <input type="submit" value="注      册" height="50px"/>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div>
+        <img src="img/footer.jpg"  width="100%"/>
+    </div>
+    <div id="bottom">
+        <a href="#">关于我们</a>
+        <a href="#">联系我们</a>
+        <a href="#">招贤纳士</a>
+        <a href="#">法律声明</a>
+        <a href="#">友情链接</a>
+        <a href="#">支付方式</a>
+        <a href="#">配送方式</a>
+        <a href="#">服务声明</a>
+        <a href="#">广告声明</a>
+        <p>
+            Copyright © 2009-2019 极客商城 版权所有
+        </p>
+    </div>
+</div>
+</body>
+</html>
