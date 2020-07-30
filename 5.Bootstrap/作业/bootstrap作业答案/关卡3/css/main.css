@@ -1,0 +1,88 @@
+
+/**
+ * 
+ */
+.topbar{
+    /* height: 60px; */
+    line-height: 60px;
+    /* border-bottom: 1px solid #d0d0d0; */
+}
+
+/** 媒体查询
+ * 当屏幕宽度小于768时，给指定样式设置背景图片
+ * max-width 表示最大值为设置的值，也就是说其他值必须小于768.
+ */
+@media (max-width: 768px) {
+	#nav-brand-itheima {
+		background: url(../img/logo2.png) 0 center;
+	}
+}
+
+.nav-center{
+    top: 0;
+	
+    z-index: 9;
+    left: 0;
+    right: 0;
+}
+
+
+.product-item{
+	height: 200px;
+	text-align: center;
+}
+
+.product img{
+	/* width:100%; */
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.product p:nth-of-type(2n+0){
+	color: #CB2D01;
+}
+
+
+#itcast-copyright li + li{
+	border-left: 1px solid #CCCCCA;
+}
+
+.floor-tese{
+    height: 420px;
+	border: 1px solid #e9e9e9;
+	border-radius: 5px;
+	
+    /* border-top: 0; */
+	margin: 5px;
+}
+.floor-tese .tab-content{
+    /* height: 100%; */
+	
+}
+
+.elevator{
+    position: fixed;
+    top: 100px;
+    width: 40px;
+    left: 5%;
+}
+
+.elevator .active a{
+	padding: 6px; 
+}
+
+.elevator a .one{
+	display: block;
+}
+
+.elevator  a .two{
+	display: none;
+}
+
+.elevator .active a .one{
+	display: none ;
+}
+
+.elevator .active a .two{
+	display: block;
+}
